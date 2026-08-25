@@ -7,17 +7,27 @@
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=1270244584]
+collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2010554232]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=474813803]
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=474813803]
 texture = ExtResource("2_qhqgy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000371732]
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000371732]
 shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=57846227]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2123138413]
+shape = SubResource("RectangleShape2D_o5qli")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

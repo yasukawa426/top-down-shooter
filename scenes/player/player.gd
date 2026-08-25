@@ -55,4 +55,17 @@ func _physics_process(delta: float) -> void:
 				camera2d.zoom.x -= 0.04
 				camera2d.zoom.y -= 0.04
 
-	move_and_slide()
+	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if the body being detected is the player, just ignore it. It shouldn't, tho, because I set the collision mask to only detect enemies, but just in case
+	if body.get_instance_id() == self.get_instance_id():
+		print("Hit themselves")
+		return
+		
+	#got hit, hide and emit signal
+	hide()
+	hit.emit()
+	#disables collision for area2d as to not trigger multiple times after finished collision processing
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
