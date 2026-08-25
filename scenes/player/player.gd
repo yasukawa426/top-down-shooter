@@ -23,16 +23,25 @@ func _physics_process(delta: float) -> void:
 	
 
 	if Input.is_action_pressed("move_left"):
-		velocity.x += -SPEED 
+		velocity.x += -1 
 
 	if Input.is_action_pressed("move_right"):
-		velocity.x += SPEED
+		velocity.x += 1
 	
 	if Input.is_action_pressed("move_up"):
-		velocity.y += -SPEED
+		velocity.y += -1
 
 	if Input.is_action_pressed("move_down"):
-		velocity.y += SPEED
+		velocity.y += 1
+		
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * SPEED 
+	else:
+		pass
+		
+	# move_and_slide already uses delta
+	#velocity = velocity * delta
+	move_and_slide()
 	
 	
 	
