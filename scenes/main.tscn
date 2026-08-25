@@ -31,3 +31,38 @@ shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall" unique_id=923665312]
 mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall2" type="StaticBody2D" parent="." unique_id=1099713060]
+position = Vector2(867, 533)
+rotation = 1.1150823
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall2" unique_id=153755965]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall2" unique_id=1372161892]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall3" type="StaticBody2D" parent="." unique_id=146206381]
+position = Vector2(1304, 427)
+rotation = 1.5707964
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall3" unique_id=750253217]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall3" unique_id=66494035]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall4" type="StaticBody2D" parent="." unique_id=913768806]
+position = Vector2(1599, 229)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall4" unique_id=1363401257]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall4" unique_id=1334469690]
+mesh = SubResource("QuadMesh_0wfyh")
