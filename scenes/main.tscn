@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="1_o5qli"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(99, 500)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0wfyh"]
+size = Vector2(100, 500)
+
 [node name="Main" type="Node2D" unique_id=885210974]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=162028786]
@@ -14,3 +20,14 @@ color = Color(0.31764707, 0.21176471, 1, 1)
 
 [node name="Player" parent="." unique_id=1270244584 instance=ExtResource("1_o5qli")]
 position = Vector2(62, 65)
+
+[node name="TestWall" type="StaticBody2D" parent="." unique_id=1976476061]
+position = Vector2(586, 374)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall" unique_id=902761628]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall" unique_id=923665312]
+mesh = SubResource("QuadMesh_0wfyh")
