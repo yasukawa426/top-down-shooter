@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED : float = 300.0
 const JUMP_VELOCITY: float = -400.0
+@onready var camera2d: Camera2D = $Camera2D
+
 
 
 func _physics_process(delta: float) -> void:
@@ -31,11 +33,26 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("move_down"):
 		velocity.y += SPEED
+	
+	
+	
+	#mouse wheel only gets detected by "action_just_realeased" method
+	if camera2d.zoom.x < 1:
+		if Input.is_action_pressed("zoom_in"):
+				camera2d.zoom.x += 0.02
+				camera2d.zoom.y += 0.02
+		
+		elif Input.is_action_just_released("zoom_in"):
+				camera2d.zoom.x += 0.04
+				camera2d.zoom.y += 0.04
 
-	# var direction := Input.get_axis("ui_left", "ui_right")
-	# if direction:
-	# 	velocity.x = direction * SPEED
-	# else:
-	# 	velocity.x = move_toward(velocity.x, 0, SPEED)
+	if camera2d.zoom.x > 0.5:
+		if Input.is_action_pressed("zoom_out"):
+				camera2d.zoom.x -= 0.02
+				camera2d.zoom.y -= 0.02
+		
+		elif Input.is_action_just_released("zoom_out"):
+				camera2d.zoom.x -= 0.04
+				camera2d.zoom.y -= 0.04
 
 	move_and_slide()
