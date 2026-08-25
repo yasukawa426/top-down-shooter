@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://casmc0sauekke"]
+
+[ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=885210974]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=162028786]
+scale = Vector2(20000, 20000)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=896453822]
+offset_right = 1212.9
+offset_bottom = 800.0
+color = Color(0.31764707, 0.21176471, 1, 1)
+
+[node name="Player" parent="." unique_id=1270244584 instance=ExtResource("1_o5qli")]
+position = Vector2(62, 65)
