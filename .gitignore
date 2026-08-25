@@ -5,3 +5,4 @@ export/
 backups/
 local_config/
 project_time_traker.json
+*.tmp
