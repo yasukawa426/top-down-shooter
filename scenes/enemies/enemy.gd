@@ -19,10 +19,11 @@ func _physics_process(delta: float) -> void:
 		#gets the direction it should move to
 		velocity = (player.position - position).normalized()
 
-		
+		#apply speed to the direction
 		if velocity.length() > 0:
 			velocity = velocity * SPEED
 			
+		#kachaw
 		move_and_slide()
 		
 		
