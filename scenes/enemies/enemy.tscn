@@ -18,3 +18,12 @@ texture = ExtResource("1_6xk8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291681670]
 shape = SubResource("RectangleShape2D_8e3ao")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1547769493]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1495612045]
+shape = SubResource("RectangleShape2D_8e3ao")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
