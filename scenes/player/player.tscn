@@ -9,7 +9,7 @@ size = Vector2(1, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(128, 128)
 
-[node name="Player" type="CharacterBody2D" unique_id=1270244584]
+[node name="Player" type="CharacterBody2D" unique_id=1270244584 groups=["player"]]
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_g2els")

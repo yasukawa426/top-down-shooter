@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://casmc0sauekke"]
 
 [ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bxqvp76i5lde" path="res://scenes/enemies/enemy.tscn" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(99, 500)
@@ -66,3 +67,15 @@ shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall4" unique_id=1334469690]
 mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="Enemy" parent="." unique_id=171688255 instance=ExtResource("2_0wfyh")]
+position = Vector2(1497, -365)
+
+[node name="Enemy2" parent="." unique_id=2032086369 instance=ExtResource("2_0wfyh")]
+position = Vector2(-745, 579)
+
+[node name="Enemy3" parent="." unique_id=1516625361 instance=ExtResource("2_0wfyh")]
+position = Vector2(1383, 785)
+
+[node name="Enemy4" parent="." unique_id=1693635587 instance=ExtResource("2_0wfyh")]
+position = Vector2(-550, -552)
