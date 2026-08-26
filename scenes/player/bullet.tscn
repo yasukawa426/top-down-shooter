@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://bpf6g8myb7m0q"]
 
+[ext_resource type="Script" uid="uid://dglj8dwhp8ja3" path="res://scenes/player/bullet.gd" id="1_2as5g"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kel6l"]
 radius = 0.51457924
 
 [sub_resource type="SphereMesh" id="SphereMesh_kel6l"]
 
-[node name="Bullet" type="Area2D" unique_id=1783115493 groups=["bullets"]]
+[node name="Bullet" type="RigidBody2D" unique_id=787611502 groups=["bullets"]]
 collision_layer = 16
-collision_mask = 27
+collision_mask = 3
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_2as5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1202569792]
 scale = Vector2(14.800001, 14.800001)
@@ -16,3 +22,5 @@ shape = SubResource("CircleShape2D_kel6l")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1468725869]
 scale = Vector2(14.800001, 14.800001)
 mesh = SubResource("SphereMesh_kel6l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
