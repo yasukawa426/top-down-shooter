@@ -15,19 +15,13 @@ func _physics_process(delta: float) -> void:
 	
 	else:
 		look_at(player.position)
+
+		#gets the direction it should move to
+		velocity = (player.position - position).normalized()
+
 		
-		if (player.position.x - position.x) > 0:
-			velocity.x = 1
-		else:
-			velocity.x = -1
-		
-		if (player.position.y - position.y) > 0:
-			velocity.y = 1
-		else:
-			velocity.y = -1
-			
 		if velocity.length() > 0:
-			velocity = velocity.normalized() * SPEED
+			velocity = velocity * SPEED
 			
 		move_and_slide()
 		
