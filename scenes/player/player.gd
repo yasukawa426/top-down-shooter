@@ -31,17 +31,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _handle_user_input() -> void:
-	if Input.is_action_pressed("move_left"):
-		velocity.x += -1
-
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+	velocity.x = Input.get_axis("move_left", "move_right")
+	velocity.y = Input.get_axis("move_up", "move_down")
 	
-	if Input.is_action_pressed("move_up"):
-		velocity.y += -1
-
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
 		
 	if Input.is_action_pressed("shoot"):
 		var new_bullet: Area2D = bullet.instantiate()
