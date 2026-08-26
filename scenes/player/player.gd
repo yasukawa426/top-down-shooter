@@ -1,10 +1,10 @@
 extends CharacterBody2D
+signal hit
 
-
-const SPEED : float = 300.0
+@export var SPEED: float = 600.0
 const JUMP_VELOCITY: float = -400.0
 @onready var camera2d: Camera2D = $Camera2D
-
+@onready var bullet = preload("res://scenes/player/bullet.tscn")
 
 
 func _physics_process(delta: float) -> void:
@@ -12,16 +12,27 @@ func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
 
-
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	velocity = Vector2.ZERO
 	
+	_handle_user_input()
 
+	
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * SPEED
+	else:
+		pass
+		
+	# move_and_slide already uses delta
+	#velocity = velocity * delta
+	move_and_slide()
+
+
+func _handle_user_input() -> void:
 	if Input.is_action_pressed("move_left"):
-		velocity.x += -1 
+		velocity.x += -1
 
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -32,16 +43,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
 		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * SPEED 
-	else:
-		pass
-		
-	# move_and_slide already uses delta
-	#velocity = velocity * delta
-	move_and_slide()
+	if Input.is_action_pressed("shoot"):
+		var new_bullet: Area2D = bullet.instantiate()
+		new_bullet.position = $BulletMarker2D.global_position
+		#new_bullet.y = $Bullet/MeshInstance2D.y
+		#add_child(new_bullet)
+		add_sibling(new_bullet)
 	
-	
+	if Input.is_action_just_released("reset"):
+		var bullets: Array[Node] = get_tree().get_nodes_in_group("bullets")
+		for projectile in bullets:
+			projectile.queue_free()
 	
 	#mouse wheel only gets detected by "action_just_realeased" method
 	if camera2d.zoom.x < 1:
@@ -61,9 +73,6 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_released("zoom_out"):
 				camera2d.zoom.x -= 0.04
 				camera2d.zoom.y -= 0.04
-
-	
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#if the body being detected is the player, just ignore it. It shouldn't, tho, because I set the collision mask to only detect enemies, but just in case
