@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxqvp76i5lde"]
 
-[ext_resource type="Texture2D" uid="uid://cxvilrkhskb18" path="res://assets/icon.svg" id="1_6xk8f"]
 [ext_resource type="Script" uid="uid://5qhewt5gc6k0" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
+[ext_resource type="Texture2D" uid="uid://13lhpohapjf6" path="res://assets/evil_godot.svg" id="2_8e3ao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e3ao"]
 size = Vector2(128, 128)
@@ -14,7 +14,8 @@ script = ExtResource("1_8e3ao")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=148368133]
 modulate = Color(0.86395586, 0, 0.29259437, 1)
-texture = ExtResource("1_6xk8f")
+texture_filter = 1
+texture = ExtResource("2_8e3ao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291681670]
 shape = SubResource("RectangleShape2D_8e3ao")
