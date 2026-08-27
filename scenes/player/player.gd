@@ -34,8 +34,9 @@ func _handle_user_input() -> void:
 	velocity.y = Input.get_axis("move_up", "move_down")
 	
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and $ShootCooldownTimer.is_stopped():
 		_spawn_bullet()
+		$ShootCooldownTimer.start()
 	
 	if Input.is_action_just_released("reset"):
 		var bullets: Array[Node] = get_tree().get_nodes_in_group("bullets")
