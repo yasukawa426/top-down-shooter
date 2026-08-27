@@ -1,0 +1,9 @@
+- Add gameover, score and restart
+- Add UI (health? wave, bullet cd bar? start menu)
+- Peridiocally spawn health? (each second, 5% chance to spawn a hearth on the map or something)
+- Add random enemy spawn
+- Add gun texture
+- Add Sounds
+- Add waves? (set amount of enemies per wave? each wave has a set enemy spawn speed/type?)
+- Add upgrades after each wave? dash/multi shoot/speedup/attackspeed/etc - destermination, as in, respawn once or something
+- Add start menu, pause
