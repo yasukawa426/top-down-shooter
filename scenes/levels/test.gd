@@ -1,6 +1,8 @@
 extends Node2D
+signal player_died
 
 @export var mob_scene: PackedScene
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +12,7 @@ func _ready() -> void:
 	player_node.position = $PlayerSpawnMarker2D.position
 	
 	add_child(player_node)
+	player_node.died.connect(_on_player_died)
 	
 	print("Player Added!")
 
@@ -22,3 +25,7 @@ func _on_mob_timer_timeout() -> void:
 	
 	
 	add_child(mob)
+
+
+func _on_player_died() -> void:
+	player_died.emit()
