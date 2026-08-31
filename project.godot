@@ -27,10 +27,6 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/project-time-tracker/plugin.cfg")
 
-[global_group]
-
-mobs=""
-
 [gui]
 
 theme/custom_font="uid://dt3efleoqglwv"
@@ -98,6 +94,8 @@ reset={
 
 [layer_names]
 
+2d_render/layer_1="Background"
+2d_render/layer_10="Foreground"
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="PowerUp"
