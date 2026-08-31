@@ -25,6 +25,9 @@ func _start_game() -> void:
 	_set_score(0)
 	$ScoreTimer.start()
 	
+	#reset player
+	$Player.reset()
+	
 	#unpause game
 	get_tree().paused = false
 

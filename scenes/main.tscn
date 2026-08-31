@@ -3,9 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://clskme7odkbte" path="res://scenes/levels/test.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://hq46cpwvrnig" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bhpii81b3taj2" path="res://scenes/hud.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="3_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=885210974]
 script = ExtResource("1_sugp2")
+
+[node name="Player" parent="." unique_id=1270244584 instance=ExtResource("3_jyhfs")]
 
 [node name="Levels" type="Node2D" parent="." unique_id=614497408]
 process_mode = 1
