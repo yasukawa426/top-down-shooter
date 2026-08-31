@@ -26,6 +26,9 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/project-time-tracker/plugin.cfg")
+[gui]
+
+theme/custom_font="uid://dt3efleoqglwv"
 
 [input]
 
