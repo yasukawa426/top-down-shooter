@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://casmc0sauekke"]
 
 [ext_resource type="PackedScene" uid="uid://clskme7odkbte" path="res://scenes/levels/test.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://hq46cpwvrnig" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bhpii81b3taj2" path="res://scenes/hud.gd" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=885210974]
+script = ExtResource("1_sugp2")
 
 [node name="Levels" type="Node2D" parent="." unique_id=614497408]
+process_mode = 1
 
 [node name="Test" parent="Levels" unique_id=882016568 instance=ExtResource("1_o5qli")]
 
@@ -187,3 +190,14 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "GIVE UP"
 
+[node name="ScoreTimer" type="Timer" parent="." unique_id=717289112]
+process_mode = 1
+
+[connection signal="player_died" from="Levels/Test" to="." method="_on_player_died"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
+[connection signal="timeout" from="HUD/MessageTimer" to="HUD" method="_on_message_timer_timeout"]
+[connection signal="pressed" from="HUD/MenuControl/StartButton" to="HUD" method="_on_start_button_pressed"]
+[connection signal="pressed" from="HUD/MenuControl/ExitButton" to="HUD" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HUD/GameOverControl/ColorRect/TryAgainButton" to="HUD" method="_on_start_button_pressed"]
+[connection signal="pressed" from="HUD/GameOverControl/ColorRect/ExitButton" to="HUD" method="_on_exit_button_pressed"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
