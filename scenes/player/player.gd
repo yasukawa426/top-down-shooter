@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal hit
+signal died
 
 @export var SPEED: float = 600.0
 @export var BULLET_SPEED: float = 2000.0
@@ -80,6 +80,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 	#got hit, hide and emit signal
 	hide()
-	hit.emit()
+	died.emit()
 	#disables collision for area2d as to not trigger multiple times after finished collision processing
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
