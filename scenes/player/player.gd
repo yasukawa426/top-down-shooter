@@ -3,10 +3,18 @@ signal died
 
 @export var SPEED: float = 600.0
 @export var BULLET_SPEED: float = 2000.0
+@export var INITIAL_MAX_HP = 5
+
+var max_hp
+var current_hp
+
 
 @onready var camera2d: Camera2D = $Camera2D
 @onready var bullet = preload("res://scenes/player/bullet.tscn")
 
+func _ready() -> void:
+	max_hp = INITIAL_MAX_HP
+	current_hp = max_hp
 
 func _process(delta: float) -> void:
 	#rotate towards the mouse
@@ -77,9 +85,32 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_instance_id() == self.get_instance_id():
 		print("Hit themselves")
 		return
+	
+	if body.is_in_group("mobs"):
+		damage_player(body.DAMAGE)
+	
+
+
+func damage_player(damage: int) -> void: 
+	print("took " + str(damage) + " damage")
+	current_hp -= damage
+	
+	if current_hp <= 0:
+		_die()
 		
+		
+
+func _die() -> void:
 	#got hit, hide and emit signal
 	hide()
 	died.emit()
 	#disables collision for area2d as to not trigger multiple times after finished collision processing
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+
+func reset() -> void:
+	max_hp = INITIAL_MAX_HP
+	current_hp = INITIAL_MAX_HP
+	
+	show()
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+	

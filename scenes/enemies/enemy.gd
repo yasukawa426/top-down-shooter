@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 
 @export var SPEED = 200
+@export var DAMAGE: int = 1
+
+
 #enemy max speed, rn its slighty lower than the player
 const _MAX_SPEED = 500
+const _MINIMUM_DAMAGE = 1
+
 var player:Node2D
 
 
@@ -14,9 +19,13 @@ func _ready() -> void:
 	#the smaller the faster, we use power so it is even more noticiable
 	set_speed(SPEED / pow(rand_scale, 1.5))
 	
+	set_damage(DAMAGE * pow(rand_scale, 3))
+	
 	if OS.is_debug_build():
 		$DebugSpeedLabel.visible = true
 		$DebugSpeedLabel.text = str(int(SPEED))
+		$DebugDamageLabel.visible = true
+		$DebugDamageLabel.text = str(int(DAMAGE))
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -52,3 +61,8 @@ func set_speed(speed: float) -> void:
 		
 	SPEED = speed 
 	
+func set_damage(damage: int) -> void:
+	if damage < _MINIMUM_DAMAGE:
+		damage = _MINIMUM_DAMAGE
+	
+	DAMAGE = damage
