@@ -1,9 +1,189 @@
 [gd_scene format=3 uid="uid://casmc0sauekke"]
 
 [ext_resource type="PackedScene" uid="uid://clskme7odkbte" path="res://scenes/levels/test.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bhpii81b3taj2" path="res://scenes/hud.gd" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=885210974]
 
 [node name="Levels" type="Node2D" parent="." unique_id=614497408]
 
 [node name="Test" parent="Levels" unique_id=882016568 instance=ExtResource("1_o5qli")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1244026159]
+process_mode = 3
+script = ExtResource("2_0wfyh")
+
+[node name="MessageTimer" type="Timer" parent="HUD" unique_id=454982096]
+wait_time = 2.0
+one_shot = true
+
+[node name="MenuControl" type="Control" parent="HUD" unique_id=1217899129]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MessageLabel" type="Label" parent="HUD/MenuControl" unique_id=1333822017]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 774.0
+offset_top = 366.5
+offset_right = 1106.0
+offset_bottom = 431.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "KILL THEM ALL"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="HUD/MenuControl" unique_id=1144414824]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 872.0
+offset_top = 607.0
+offset_right = 1008.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "START"
+
+[node name="ExitButton" type="Button" parent="HUD/MenuControl" unique_id=1903461045]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 872.0
+offset_top = 705.0
+offset_right = 982.0
+offset_bottom = 778.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "EXIT"
+
+[node name="GameplayControl" type="Control" parent="HUD" unique_id=1626085679]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaveLabel" type="Label" parent="HUD/GameplayControl" unique_id=1365943279]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 825.0
+offset_right = 1055.0
+offset_bottom = 65.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Wave: WIP"
+
+[node name="TimeLabel" type="Label" parent="HUD/GameplayControl" unique_id=1395245453]
+layout_mode = 1
+offset_left = 24.0
+offset_right = 64.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="GameOverControl" type="Control" parent="HUD" unique_id=974439561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/GameOverControl" unique_id=1591954623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -268.0
+offset_right = 224.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.016795876, 0.100442015, 0.21169323, 1)
+
+[node name="MessageLabel" type="Label" parent="HUD/GameOverControl/ColorRect" unique_id=777254090]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.5
+offset_top = 8.0
+offset_right = 102.5
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "YOU DIED"
+
+[node name="GameOverLabel" type="Label" parent="HUD/GameOverControl/ColorRect" unique_id=2102620777]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -146.5
+offset_right = 152.0
+offset_bottom = -13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "SURVIVED 2 SECONDS"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TryAgainButton" type="Button" parent="HUD/GameOverControl/ColorRect" unique_id=766646683]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -226.0
+offset_right = 152.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "KILL THEM ALL"
+autowrap_mode = 2
+
+[node name="ExitButton" type="Button" parent="HUD/GameOverControl/ColorRect" unique_id=2057986492]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.5
+offset_top = -89.0
+offset_right = 93.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "GIVE UP"
+
