@@ -12,13 +12,6 @@ func _ready() -> void:
 	add_child(player_node)
 	
 	print("Player Added!")
-	print(get_children(	))
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_mob_timer_timeout() -> void:
 	var mob: CharacterBody2D = mob_scene.instantiate()
