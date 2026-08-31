@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://clskme7odkbte"]
+
+[ext_resource type="Script" uid="uid://baqyhx8b623ma" path="res://scenes/levels/test.gd" id="1_52kye"]
+[ext_resource type="PackedScene" uid="uid://bxqvp76i5lde" path="res://scenes/enemies/enemy.tscn" id="1_8153q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(99, 500)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0wfyh"]
+size = Vector2(100, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(448, 2878)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(3968, 346)
+
+[sub_resource type="Curve2D" id="Curve2D_52kye"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1960, -976, 0, 0, 0, 0, 1984, -992, 0, 0, 0, 0, 1984, 1168, 0, 0, 0, 0, -1960, 1168, 0, 0, 0, 0, -1960, -976)
+}
+point_count = 5
+
+[node name="Test" type="Node2D" unique_id=882016568]
+script = ExtResource("1_52kye")
+mob_scene = ExtResource("1_8153q")
+
+[node name="Background" type="Node2D" parent="." unique_id=1664771503]
+
+[node name="ColorRect2" type="ColorRect" parent="Background" unique_id=642247809]
+offset_top = -794.0
+offset_right = 1212.9
+offset_bottom = 6.0
+color = Color(0.725771, 0.16413835, 0.18496022, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1837580195]
+offset_right = 1212.9
+offset_bottom = 800.0
+color = Color(0.31764707, 0.21176471, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Background" unique_id=1026558801]
+offset_left = -1238.0
+offset_right = -25.099976
+offset_bottom = 800.0
+color = Color(1.92523e-07, 0.49221307, 0.23055744, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Background" unique_id=967622892]
+offset_left = -1243.0
+offset_top = -814.0
+offset_right = -30.099976
+offset_bottom = -14.0
+color = Color(0.65837795, 0.27662927, 0, 1)
+
+[node name="PlayerSpawnMarker2D" type="Marker2D" parent="." unique_id=1669599676]
+position = Vector2(-16, -4)
+
+[node name="TestWall" type="StaticBody2D" parent="." unique_id=1005703325]
+position = Vector2(586, 374)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall" unique_id=322267565]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall" unique_id=2069744290]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall2" type="StaticBody2D" parent="." unique_id=31862744]
+position = Vector2(867, 533)
+rotation = 1.1150823
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall2" unique_id=1411735594]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall2" unique_id=1231743674]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall3" type="StaticBody2D" parent="." unique_id=1824400104]
+position = Vector2(1304, 427)
+rotation = 1.5707964
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall3" unique_id=1359495856]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall3" unique_id=1431909904]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="TestWall4" type="StaticBody2D" parent="." unique_id=2103616588]
+position = Vector2(1599, 229)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall4" unique_id=1908093667]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall4" unique_id=1906379085]
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="Enemy" parent="." unique_id=2032086369 instance=ExtResource("1_8153q")]
+position = Vector2(1497, -365)
+
+[node name="Enemy2" parent="." unique_id=636438818 instance=ExtResource("1_8153q")]
+position = Vector2(-745, 579)
+
+[node name="Enemy3" parent="." unique_id=2079589483 instance=ExtResource("1_8153q")]
+position = Vector2(1383, 785)
+
+[node name="Enemy4" parent="." unique_id=1577577063 instance=ExtResource("1_8153q")]
+position = Vector2(-550, -552)
+
+[node name="InvisibleWalls" type="Node2D" parent="." unique_id=1496878607]
+position = Vector2(0, 93)
+
+[node name="RightArea2D" type="StaticBody2D" parent="InvisibleWalls" unique_id=1805887643]
+position = Vector2(2216, 0)
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/RightArea2D" unique_id=226688746]
+scale = Vector2(0.99999994, 0.9999999)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="LeftArea2D" type="StaticBody2D" parent="InvisibleWalls" unique_id=1759981103]
+position = Vector2(-2216, 0)
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/LeftArea2D" unique_id=1023165070]
+scale = Vector2(0.99999994, 0.9999999)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="DownArea2D" type="StaticBody2D" parent="InvisibleWalls" unique_id=587691678]
+position = Vector2(0, 1263)
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/DownArea2D" unique_id=989319046]
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="UpArea2D" type="StaticBody2D" parent="InvisibleWalls" unique_id=93549033]
+position = Vector2(0, -1267)
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/UpArea2D" unique_id=1338000800]
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="MobPath2D" type="Path2D" parent="." unique_id=1771946364]
+curve = SubResource("Curve2D_52kye")
+
+[node name="MobSpawnPathFollow2D" type="PathFollow2D" parent="MobPath2D" unique_id=594275825]
+position = Vector2(-1960, -976)
+rotation = -0.0040567727
+
+[node name="MobTimer" type="Timer" parent="." unique_id=1556381325]
+autostart = true
+
+[node name="MobTimer2" type="Timer" parent="." unique_id=1355901922]
+one_shot = true
+autostart = true
+
+[node name="MobTimer3" type="Timer" parent="." unique_id=478957046]
+one_shot = true
+autostart = true
+
+[node name="MobTimer4" type="Timer" parent="." unique_id=1750102534]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MobTimer2" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MobTimer3" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MobTimer4" to="." method="_on_mob_timer_timeout"]
