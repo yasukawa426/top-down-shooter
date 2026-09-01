@@ -1,9 +1,13 @@
-- Add gameover, score and restart
-- Add UI (health? wave, bullet cd bar? start menu)
-- Peridiocally spawn health? (each second, 5% chance to spawn a hearth on the map or something)
-- Add random enemy spawn
+- Add gameover, score and restart (done)
+- Add start menu, pause (done)
+- Add random enemy spawn (done)
+- Add health and health bar to player (done)
+- Peridiocally spawn health? they despawn after 10 seconds or something (each second, 5% chance to spawn a hearth on the map or 30% every 10 seconds or 2% when killing an enemy)
+- Player gotta survive x seconds to win. 
 - Add gun texture
 - Add Sounds
-- Add waves? (set amount of enemies per wave? each wave has a set enemy spawn speed/type?)
-- Add upgrades after each wave? dash/multi shoot/speedup/attackspeed/etc - destermination, as in, respawn once or something
-- Add start menu, pause
+- Every y seconds or when leveling up player gets to choose a upgrade/power up? dash/multi shoot/speedup/attackspeed/etc - destermination, as in, cinematically respawn once or something
+- Mobs spawn every z seconds, decreasing the time between the longer the player survives
+- Make some mobs have more health?
+
+- polish: shooting, enemy deaths, sounds, hit feedback, and UI feel satisfying.
