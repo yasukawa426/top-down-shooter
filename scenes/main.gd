@@ -48,3 +48,8 @@ func _on_score_timer_timeout() -> void:
 func _set_score(value: int) -> void:
 	score = value
 	$HUD.update_score(value)
+
+
+func _on_player_damaged() -> void:
+	var data :Dictionary = $Player.get_player_stats()
+	$HUD.update_health(data.current_hp, data.max_hp)

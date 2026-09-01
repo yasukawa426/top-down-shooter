@@ -33,6 +33,13 @@ func _on_start_button_pressed() -> void:
 	$GameplayControl.show()
 	$MenuControl.hide()
 	$GameOverControl.hide()
+	
+	#TODO: get player data in a better way
+	var player_data = get_node("../Player").get_player_stats()
+	
+	$GameplayControl/HealthProgressBar.max_value = player_data.max_hp
+	$GameplayControl/HealthProgressBar.value = player_data.max_hp
+	
 	start_game.emit()
 
 func update_score(value: int) -> void:
@@ -43,3 +50,7 @@ func _score_to_time(value: int) -> String:
 	var seconds := int(value) % 60
 	
 	return "%02d:%02d" % [minutes, seconds]
+
+func update_health(value, max_hp):
+	$GameplayControl/HealthProgressBar.max_value = max_hp
+	$GameplayControl/HealthProgressBar.value = value

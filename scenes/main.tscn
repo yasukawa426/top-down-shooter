@@ -99,13 +99,16 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "00:00"
 
-[node name="TimeLabel" type="Label" parent="HUD/GameplayControl" unique_id=1395245453]
+[node name="HealthProgressBar" type="ProgressBar" parent="HUD/GameplayControl" unique_id=377129798]
+modulate = Color(0.18423513, 0.6411567, 0, 1)
 layout_mode = 1
-offset_left = 24.0
-offset_right = 64.0
-offset_bottom = 65.0
-theme_override_font_sizes/font_size = 64
-text = "0"
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 240.0
+offset_bottom = 48.0
+tooltip_text = "Health"
+max_value = 5.0
+value = 2.0
 
 [node name="GameOverControl" type="Control" parent="HUD" unique_id=974439561]
 layout_mode = 3
@@ -197,6 +200,7 @@ text = "GIVE UP"
 [node name="ScoreTimer" type="Timer" parent="." unique_id=717289112]
 process_mode = 1
 
+[connection signal="damaged" from="Player" to="." method="_on_player_damaged"]
 [connection signal="player_died" from="Levels/Test" to="." method="_on_player_died"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="HUD/MessageTimer" to="HUD" method="_on_message_timer_timeout"]
