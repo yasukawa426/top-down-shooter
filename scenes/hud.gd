@@ -38,6 +38,7 @@ func _on_start_button_pressed() -> void:
 	$GameplayControl.show()
 	$MenuControl.hide()
 	$GameOverControl.hide()
+	$WinControl.hide()
 	
 	#TODO: get player data in a better way
 	var player_data = get_node("../Player").get_player_stats()
