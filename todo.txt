@@ -1,18 +1,126 @@
-- Add gameover, score and restart (done)
-- Add start menu, pause (done)
-- Add random enemy spawn (done)
-- Add health and health bar to player (done)
-- Player gotta survive x minutes to win.  (done)
-- Peridiocally spawn health? they despawn after 10 seconds or something (each second, 5% chance to spawn a hearth on the map or 30% every 10 seconds or 2% when killing an enemy)
-- Add gun texture
-- Add Sounds
-- Every y seconds or when leveling up player gets to choose a upgrade/power up? dash/multi shoot/speedup/attackspeed/etc - destermination, as in, cinematically respawn once or something
-- Mobs spawn every z seconds, decreasing the time between the longer the player survives
-- Make some mobs have more health?
+- Core:
+    - Add gameover, score and restart (done)
+    - Add start menu, pause (done)
+    - Add random enemy spawn (done)
+    - Add health and health bar to player (done)
+    - Player gotta survive x minutes to win (done)
+    - Add a reason for surviving 5 minutes
+        - Maybe a dialog where they tell you to hold the invaders while the weapon is being charged. Maybe something like (YOU'RE OUR LAST HOPE... HOLD THE INVASOR WHILE THE WEAPON IS CHARGED)
+    - Change timer to countdown
+        - 05:00 -> 00:00
+        - Weapon finishes charging at 00:00
+    - Add victory sequence
+    - Maybe secret ending
+        - Normal ending: "Mission successful, you held the invaders long enough, sacrificing yourself in the proccess..." And then a big lases comes evaporating everthing -> screen goes blank 
+        - Choice: "Accept outcome / Try to change fate" then goes back in time somehow
+        - Need to do something extra to unlock the alternate ending
 
+- Enemies:
+    - Make mobs spawn every z seconds
+        - Decrease time between spawns the longer the player survives
+    - Make some mobs have more health
+    - Select different sprites based on the enemy status
+        - Basic enemy (close to base values)
+        - Fast enemy (small and fast)
+        - Tank enemy (big and strong)
+        - Invincible enemy (special enemy for the end of game)
 
+- Player / Weapons:
+    - Add gun texture
+    - Add upgrades/power ups
+        - Every y seconds or when leveling up player gets to choose an upgrade
+        - Pause/freeze game while choosing and give 3 choices
+            - Dash
+            - Multishot
+            - Movement speed
+            - Attack speed
+            - Damage
+            - Projectile speed
+            - etc.
+            - Maybe some upgrades have a more dramatic/cinematic effect. Like a revive that when you die the game pauses, camera closes in and the player shakes or something.
+    - Add health pickups
+        - Periodically spawn health?
+            - 5% each second or
+            - 30% every 10 seconds or
+            - 2% when killing an enemy
+        - Pickups despawn after ~10 seconds
 
-- Add a reason for surviving 5 minutes (maybe a dialog where they tell you to hold the invasors while the weapon is being charged)
-- Maybe a secret ending - the normal ending is something like "mission successful, you held de invasors long enough and died with them - Accept outcome / Try to change fate", and then you need to do something extra to survive
-- polish: shooting, enemy deaths, sounds, hit feedback, and UI feel satisfying.
-- sava stats. aka.: bullets fired, damage taken, etc. 
+- Difficulty / Timed Events:
+    - Add unique events at certain timestamps, for example: 
+        - 0:30 - first difficulty increase
+        - 1:00 - introduce stronger enemy
+        - 2:00 - major difficulty increase
+        - 2:30 - weird event / stuff flying around
+        - 3:00 - major threat / invincible enemy
+        - 3:30 - sirens / warning event
+        - 4:00 - major chaos
+        - 4:30 - major event / giant enemy / arena changes
+        - 4:50 - final 10 seconds
+        - 5:00 - victory
+    - Maybe add dialog messages during certain events, like, "Invadors swarm aproaching"
+    - Maybe randomly select events from a pool of like easy, medium, hard.
+    - Add flying objects/debris during some events
+    - Add invincible enemies during a late-game event
+    - Add sirens during some events, maybe in the last minute or when the invencible enemy spawns
+    - Add flashing lights / warning effects
+    - Add final 10 second countdown
+        - Increase enemy spawn rate
+        - Sirens
+        - More projectiles/debris
+        - Music intensifies
+
+- Feedback / VFX:
+    - Add shooting feedback
+        - Muzzle flash
+        - Screen shake
+    - Add enemy hit feedback
+    - Add enemy death feedback/animation
+        - Death particles
+    - Add player damage feedback
+        - Camera shake, slighty red glow, knoback?
+    - Add projectile effects and particles
+    - Add UI feedback for important events
+    - Add warning/event animations
+
+- Audio / SFX:
+    - Add shooting sound
+    - Add enemy hit sound
+    - Add enemy death sound
+    - Add player damage sound
+    - Add health pickup sound
+    - Add upgrade sound
+    - Add UI sounds
+    - Add background music
+    - Add siren
+    - Add special event sounds
+    - Add victory sound/music
+
+- Art:
+    - Simple top-down pixel art based on shapes. Fast enemy triangle, tank a square, etc. Made in Aseprite
+    - Player sprite
+    - Enemy sprites
+        - Keep enemies recognizable through simple silhouettes/shapes
+    - Gun sprite
+    - Simple ground texture/tile
+    - Simple arena boundaries
+    - Keep ground/background simple so enemies and projectiles stand out
+
+- UI:
+    - Timer in MM:SS format (done)
+    - Health bar (kinda done, is fugly rn)
+    - Upgrade selection UI
+    - Warning/event messages (dialog and stuff)
+    - Final countdown
+    - Victory screen (fugly)
+    - Gameover screen (fugly)
+    - Keep UI simple/minimalist
+
+- Stats:
+    - Save stats
+        - Bullets fired
+        - Damage taken
+        - Enemies killed
+        - Damage dealt
+        - Time survived
+        - Score
+        - etc.
