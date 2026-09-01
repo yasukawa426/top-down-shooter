@@ -53,3 +53,8 @@ func _set_score(value: int) -> void:
 func _on_player_damaged() -> void:
 	var data :Dictionary = $Player.get_player_stats()
 	$HUD.update_health(data.current_hp, data.max_hp)
+
+
+func _on_hud_end_game() -> void:
+	#TODO: save data before quiting?
+	get_tree().quit()

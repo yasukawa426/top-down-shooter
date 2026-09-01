@@ -8,12 +8,12 @@
 [node name="Main" type="Node2D" unique_id=885210974]
 script = ExtResource("1_sugp2")
 
-[node name="Player" parent="." unique_id=1270244584 instance=ExtResource("3_jyhfs")]
-
 [node name="Levels" type="Node2D" parent="." unique_id=614497408]
 process_mode = 1
 
 [node name="Test" parent="Levels" unique_id=882016568 instance=ExtResource("1_o5qli")]
+
+[node name="Player" parent="." unique_id=1270244584 instance=ExtResource("3_jyhfs")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1244026159]
 process_mode = 3
@@ -197,15 +197,93 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "GIVE UP"
 
+[node name="WinControl" type="Control" parent="HUD" unique_id=2091117610]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/WinControl" unique_id=1152700605]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -268.0
+offset_right = 248.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.016795876, 0.100442015, 0.21169323, 1)
+
+[node name="GameOverLabel" type="Label" parent="HUD/WinControl/ColorRect" unique_id=1336038623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -268.0
+offset_right = 248.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "MISSION SUCCESSFUL
+YOU MANAGED TO HOLD THE INVASORS LONG ENOUGH AND PROTECT EARTH"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TryAgainButton" type="Button" parent="HUD/WinControl/ColorRect" unique_id=1850964789]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 61.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "KILL THEM ALL AGAIN"
+autowrap_mode = 2
+
+[node name="ExitButton" type="Button" parent="HUD/WinControl/ColorRect" unique_id=1870502574]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -120.0
+offset_right = 251.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "GIVE UP"
+
 [node name="ScoreTimer" type="Timer" parent="." unique_id=717289112]
 process_mode = 1
 
-[connection signal="damaged" from="Player" to="." method="_on_player_damaged"]
 [connection signal="player_died" from="Levels/Test" to="." method="_on_player_died"]
+[connection signal="damaged" from="Player" to="." method="_on_player_damaged"]
+[connection signal="end_game" from="HUD" to="." method="_on_hud_end_game"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="HUD/MessageTimer" to="HUD" method="_on_message_timer_timeout"]
 [connection signal="pressed" from="HUD/MenuControl/StartButton" to="HUD" method="_on_start_button_pressed"]
 [connection signal="pressed" from="HUD/MenuControl/ExitButton" to="HUD" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="HUD/GameOverControl/ColorRect/TryAgainButton" to="HUD" method="_on_start_button_pressed"]
 [connection signal="pressed" from="HUD/GameOverControl/ColorRect/ExitButton" to="HUD" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HUD/WinControl/ColorRect/TryAgainButton" to="HUD" method="_on_start_button_pressed"]
+[connection signal="pressed" from="HUD/WinControl/ColorRect/ExitButton" to="HUD" method="_on_exit_button_pressed"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # start button pressed, time to start game
 signal start_game
+signal end_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _on_message_timer_timeout() -> void:
 
 
 func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+	end_game.emit()
 
 
 func _on_start_button_pressed() -> void:
