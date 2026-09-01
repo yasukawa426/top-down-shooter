@@ -1,14 +1,19 @@
 extends CharacterBody2D
 
+## Base speed all enemies will be based on
+@export var BASE_SPEED = 200
+## Base damage all enemies will be based on
+@export var BASE_DAMAGE: int = 1
+#rn its slighty lower than the player
+## Enemy max speed after scaling.
+@export var _MAX_SPEED = 500
+## Enemy minimum damage after scaling.
+@export var _MINIMUM_DAMAGE = 1
 
-@export var SPEED = 200
-@export var DAMAGE: int = 1
 
 
-#enemy max speed, rn its slighty lower than the player
-const _MAX_SPEED = 500
-const _MINIMUM_DAMAGE = 1
-
+var SPEED: float
+var DAMAGE: float
 var player:Node2D
 
 
@@ -16,16 +21,16 @@ func _ready() -> void:
 	var rand_scale := randf_range(0.6, 1.4)
 	scale = Vector2(rand_scale, rand_scale)
 	
-	#the smaller the faster, we use power so it is even more noticiable
-	set_speed(SPEED / pow(rand_scale, 1.5))
+	#the smaller the faster and the bigger the stronger, we use power so it is even more noticiable
+	set_speed(BASE_SPEED / pow(rand_scale, 1.5))
+	set_damage(BASE_DAMAGE * pow(rand_scale, 3))
 	
-	set_damage(DAMAGE * pow(rand_scale, 3))
 	
 	if OS.is_debug_build():
 		$DebugSpeedLabel.visible = true
-		$DebugSpeedLabel.text = str(int(SPEED))
+		$DebugSpeedLabel.text = "speed: " + str(int(SPEED))
 		$DebugDamageLabel.visible = true
-		$DebugDamageLabel.text = str(int(DAMAGE))
+		$DebugDamageLabel.text = "damage: " + str(int(DAMAGE))
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO

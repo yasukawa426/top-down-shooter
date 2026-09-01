@@ -13,12 +13,14 @@ motion_mode = 1
 script = ExtResource("1_8e3ao")
 
 [node name="DebugSpeedLabel" type="Label" parent="." unique_id=132787156]
+visible = false
 offset_left = -31.0
 offset_top = -103.0
 offset_right = 34.0
 offset_bottom = -80.0
 
 [node name="DebugDamageLabel" type="Label" parent="." unique_id=777284279]
+visible = false
 offset_left = -31.0
 offset_top = -135.0
 offset_right = 34.0
