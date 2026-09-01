@@ -2,20 +2,26 @@ extends CharacterBody2D
 signal died
 signal damaged
 
+## Player movement speed
 @export var SPEED: float = 600.0
+## Player bullet movement speed
 @export var BULLET_SPEED: float = 2000.0
-@export var INITIAL_MAX_HP = 5
+## Player initial max hp
+@export var INITIAL_MAX_HP: int = 5
+## Player bullet INITIAL_DAMAGE
+@export var INITIAL_DAMAGE: int = 2
 
-var max_hp
-var current_hp
+## Player current damage, can be modified by upgrades
+var current_damage: int = INITIAL_DAMAGE
+## Player current max hp, can be modified by upgrades
+var max_hp: int = INITIAL_MAX_HP
+## Player current hp, can be modified by heals and damage.
+var current_hp: int = INITIAL_MAX_HP
 
 
 @onready var camera2d: Camera2D = $Camera2D
-@onready var bullet = preload("res://scenes/player/bullet.tscn")
+@onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
 
-func _ready() -> void:
-	max_hp = INITIAL_MAX_HP
-	current_hp = max_hp
 
 func _process(_delta: float) -> void:
 	#rotate towards the mouse
@@ -77,7 +83,7 @@ func _spawn_bullet() -> void:
 	
 	new_bullet.global_position = $BulletMarker2D.global_position
 	
-	new_bullet.linear_velocity = ( $BulletMarker2D.global_position - global_position).normalized() * BULLET_SPEED
+	new_bullet.linear_velocity = ($BulletMarker2D.global_position - global_position).normalized() * BULLET_SPEED
 	
 	add_sibling(new_bullet)
 
@@ -88,13 +94,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	
 	if body.is_in_group("mobs"):
-		damage_player(body.DAMAGE)
+		damage_player(body.scaled_damage)
 	
 
-
-func damage_player(damage: int) -> void: 
-	print("took " + str(damage) + " damage")
-	current_hp -= damage
+func damage_player(enemy_damage: int) -> void:
+	print("took " + str(enemy_damage) + " damage")
+	current_hp -= enemy_damage
 	
 	damaged.emit()
 	
@@ -102,7 +107,6 @@ func damage_player(damage: int) -> void:
 		_die()
 		
 		
-
 func _die() -> void:
 	#got hit, hide and emit signal
 	hide()
@@ -122,5 +126,6 @@ func get_player_stats() -> Dictionary:
 		"max_hp": max_hp,
 		"current_hp": current_hp,
 		"speed": SPEED,
-		"bullet_speed": BULLET_SPEED
+		"bullet_speed": BULLET_SPEED,
+		"current_damage": current_damage,
 	}

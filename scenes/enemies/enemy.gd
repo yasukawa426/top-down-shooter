@@ -63,7 +63,7 @@ func _physics_process(_delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.queue_free()
 
-	current_hp -= player.damage
+	current_hp -= player.current_damage
 
 	if current_hp <= 0:
 		_die()
