@@ -17,7 +17,7 @@ func show_message(text):
 func show_game_over(score: int) -> void:
 	$GameplayControl.hide()
 	
-	$GameOverControl/ColorRect/GameOverLabel.text = "SURVIVED " + str(score) + " SECONDS"
+	$GameOverControl/ColorRect/GameOverLabel.text = "DIED IN " + _score_to_time(score)
 	$GameOverControl.show()
 	
 
@@ -36,4 +36,10 @@ func _on_start_button_pressed() -> void:
 	start_game.emit()
 
 func update_score(value: int) -> void:
-	$GameplayControl/TimeLabel.text = str(value)
+	$GameplayControl/TimeLabel.text = _score_to_time(value)
+
+func _score_to_time(value: int) -> String:
+	var minutes := int (value / 60)
+	var seconds := int(value) % 60
+	
+	return "%02d:%02d" % [minutes, seconds]

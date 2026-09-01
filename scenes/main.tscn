@@ -81,22 +81,23 @@ text = "EXIT"
 
 [node name="GameplayControl" type="Control" parent="HUD" unique_id=1626085679]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="WaveLabel" type="Label" parent="HUD/GameplayControl" unique_id=1365943279]
+[node name="TimeLabel" type="Label" parent="HUD/GameplayControl" unique_id=1395245453]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 825.0
-offset_right = 1055.0
+offset_left = -13.0
+offset_right = 13.0
 offset_bottom = 65.0
 grow_horizontal = 2
-size_flags_vertical = 0
 theme_override_font_sizes/font_size = 64
-text = "Wave: WIP"
+text = "00:00"
 
 [node name="TimeLabel" type="Label" parent="HUD/GameplayControl" unique_id=1395245453]
 layout_mode = 1
@@ -140,7 +141,7 @@ offset_right = 102.5
 offset_bottom = 73.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
-text = "YOU DIED"
+text = "MISSION FAILED"
 
 [node name="GameOverLabel" type="Label" parent="HUD/GameOverControl/ColorRect" unique_id=2102620777]
 layout_mode = 1
@@ -156,7 +157,7 @@ offset_bottom = -13.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
-text = "SURVIVED 2 SECONDS"
+text = "DIED IN 00:00"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -174,7 +175,7 @@ offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 60
-text = "KILL THEM ALL"
+text = "KILL THEM ALL AGAIN"
 autowrap_mode = 2
 
 [node name="ExitButton" type="Button" parent="HUD/GameOverControl/ColorRect" unique_id=2057986492]
