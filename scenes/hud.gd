@@ -8,6 +8,10 @@ signal end_game
 func _ready() -> void:
 	$GameplayControl.hide()
 	$GameOverControl.hide()
+	$WinControl.hide()
+	
+	if OS.is_debug_build():
+		$DebugControl.show()
 
 func show_message(text):
 	$MessageLabel.text = text
@@ -52,6 +56,14 @@ func _score_to_time(value: int) -> String:
 	
 	return "%02d:%02d" % [minutes, seconds]
 
-func update_health(value, max_hp):
+func update_health(value, max_hp) -> void:
 	$GameplayControl/HealthProgressBar.max_value = max_hp
 	$GameplayControl/HealthProgressBar.value = value
+
+func show_win() -> void:
+	$GameplayControl.hide()
+	$WinControl.show()
+	
+func update_debug(player_data: Dictionary, time: float) -> void:
+	$DebugControl/WinTimeLabel.text = "Time to win: " + _score_to_time(time)
+	$DebugControl/PlayerLabel.text = "Player data: " + str(player_data)
