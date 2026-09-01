@@ -60,7 +60,7 @@ func _on_score_timer_timeout() -> void:
 
 func _set_score(value: int) -> void:
 	score = value
-	$HUD.update_score(value)
+	$HUD.update_score(value, WIN_TIME * 60)
 	
 	if score == (60.0 * WIN_TIME):
 		get_tree().paused = true

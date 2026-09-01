@@ -1,14 +1,13 @@
 - Core:
-    - Add gameover, score and restart (done)
-    - Add start menu, pause (done)
-    - Add random enemy spawn (done)
-    - Add health and health bar to player (done)
-    - Player gotta survive x minutes to win (done)
-    - Add a reason for surviving 5 minutes
-        - Maybe a dialog where they tell you to hold the invaders while the weapon is being charged. Maybe something like (YOU'RE OUR LAST HOPE... HOLD THE INVASOR WHILE THE WEAPON IS CHARGED)
-    - Change timer to countdown
+	- Add gameover, score and restart (done)
+	- Add start menu, pause (done)
+	- Add random enemy spawn (done)
+	- Add health and health bar to player (done)
+	- Player gotta survive x minutes to win (done)
+	- Add a reason for surviving 5 minutes
+		- Maybe a dialog where they tell you to hold the invaders while the weapon is being charged. Maybe something like (YOU'RE OUR LAST HOPE... HOLD THE INVASOR WHILE THE WEAPON IS CHARGED)
+    - Change timer to countdown (done)
         - 05:00 -> 00:00
-        - Weapon finishes charging at 00:00
     - Add victory sequence
     - Maybe secret ending
         - Normal ending: "Mission successful, you held the invaders long enough, sacrificing yourself in the proccess..." And then a big lases comes evaporating everthing -> screen goes blank 

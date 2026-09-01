@@ -48,8 +48,8 @@ func _on_start_button_pressed() -> void:
 	
 	start_game.emit()
 
-func update_score(value: int) -> void:
-	$GameplayControl/TimeLabel.text = _score_to_time(value)
+func update_score(value: int, max_score: int) -> void:
+	$GameplayControl/TimeLabel.text = _score_to_time(max_score - value)
 
 func _score_to_time(value: int) -> String:
 	var minutes := int (value / 60)
