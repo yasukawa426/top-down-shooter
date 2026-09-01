@@ -17,12 +17,12 @@ func _ready() -> void:
 	max_hp = INITIAL_MAX_HP
 	current_hp = max_hp
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#rotate towards the mouse
 	look_at(get_global_mouse_position())
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	
 	_handle_user_input()
