@@ -25,11 +25,11 @@ func _process(_delta: float) -> void:
 
 func _start_game() -> void:
 	#reset level
-	var levels = $Levels.get_children()
+	var levels: Array[Node] = $Levels.get_children()
 	for node in levels:
 		node.queue_free()
 	
-	var level_instance = test_level.instantiate()
+	var level_instance: Node2D = test_level.instantiate()
 	$Levels.add_child(level_instance)
 	level_instance.player_died.connect(_on_player_died)
 	

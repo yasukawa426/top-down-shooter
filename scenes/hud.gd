@@ -13,7 +13,7 @@ func _ready() -> void:
 	if OS.is_debug_build():
 		$DebugControl.show()
 
-func show_message(text):
+func show_message(text: String) -> void:
 	$MessageLabel.text = text
 	$MessageLabel.show()
 	$MessageTimer.start()
@@ -41,7 +41,7 @@ func _on_start_button_pressed() -> void:
 	$WinControl.hide()
 	
 	#TODO: get player data in a better way
-	var player_data = get_node("../Player").get_player_stats()
+	var player_data: Dictionary = get_node("../Player").get_player_stats()
 	
 	$GameplayControl/HealthProgressBar.max_value = player_data.max_hp
 	$GameplayControl/HealthProgressBar.value = player_data.max_hp
@@ -57,7 +57,7 @@ func _score_to_time(value: int) -> String:
 	
 	return "%02d:%02d" % [minutes, seconds]
 
-func update_health(value, max_hp) -> void:
+func update_health(value: int, max_hp: int) -> void:
 	$GameplayControl/HealthProgressBar.max_value = max_hp
 	$GameplayControl/HealthProgressBar.value = value
 
@@ -65,6 +65,6 @@ func show_win() -> void:
 	$GameplayControl.hide()
 	$WinControl.show()
 	
-func update_debug(player_data: Dictionary, time: float) -> void:
+func update_debug(player_data: Dictionary, time: int) -> void:
 	$DebugControl/WinTimeLabel.text = "Time to win: " + _score_to_time(time)
 	$DebugControl/PlayerLabel.text = "Player data: " + str(player_data)
