@@ -11,6 +11,7 @@ z_index = 5
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_8e3ao")
+BASE_HP = 2
 
 [node name="DebugSpeedLabel" type="Label" parent="." unique_id=132787156]
 visible = false
@@ -25,6 +26,13 @@ offset_left = -31.0
 offset_top = -135.0
 offset_right = 34.0
 offset_bottom = -112.0
+
+[node name="DebugHpLabel" type="Label" parent="." unique_id=1411639947]
+visible = false
+offset_left = -64.0
+offset_top = -80.0
+offset_right = -24.0
+offset_bottom = -63.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=148368133]
 modulate = Color(0.86395586, 0, 0.29259437, 1)
