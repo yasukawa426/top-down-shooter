@@ -2,12 +2,17 @@
 - Add start menu, pause (done)
 - Add random enemy spawn (done)
 - Add health and health bar to player (done)
+- Player gotta survive x minutes to win.  (done)
 - Peridiocally spawn health? they despawn after 10 seconds or something (each second, 5% chance to spawn a hearth on the map or 30% every 10 seconds or 2% when killing an enemy)
-- Player gotta survive x seconds to win. 
 - Add gun texture
 - Add Sounds
 - Every y seconds or when leveling up player gets to choose a upgrade/power up? dash/multi shoot/speedup/attackspeed/etc - destermination, as in, cinematically respawn once or something
 - Mobs spawn every z seconds, decreasing the time between the longer the player survives
 - Make some mobs have more health?
 
+
+
+- Add a reason for surviving 5 minutes (maybe a dialog where they tell you to hold the invasors while the weapon is being charged)
+- Maybe a secret ending - the normal ending is something like "mission successful, you held de invasors long enough and died with them - Accept outcome / Try to change fate", and then you need to do something extra to survive
 - polish: shooting, enemy deaths, sounds, hit feedback, and UI feel satisfying.
+- sava stats. aka.: bullets fired, damage taken, etc. 
