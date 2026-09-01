@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal died
+signal damaged
 
 @export var SPEED: float = 600.0
 @export var BULLET_SPEED: float = 2000.0
@@ -95,6 +96,8 @@ func damage_player(damage: int) -> void:
 	print("took " + str(damage) + " damage")
 	current_hp -= damage
 	
+	damaged.emit()
+	
 	if current_hp <= 0:
 		_die()
 		
@@ -114,3 +117,10 @@ func reset() -> void:
 	show()
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
 	
+func get_player_stats() -> Dictionary:
+	return {
+		"max_hp": max_hp,
+		"current_hp": current_hp,
+		"speed": SPEED,
+		"bullet_speed": BULLET_SPEED
+	}
