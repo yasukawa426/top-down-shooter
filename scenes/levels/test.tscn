@@ -32,17 +32,20 @@ offset_top = -794.0
 offset_right = 1212.9
 offset_bottom = 6.0
 color = Color(0.725771, 0.16413835, 0.18496022, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background" unique_id=1837580195]
 offset_right = 1212.9
 offset_bottom = 800.0
 color = Color(0.31764707, 0.21176471, 1, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="Background" unique_id=1026558801]
 offset_left = -1238.0
 offset_right = -25.099976
 offset_bottom = 800.0
 color = Color(1.92523e-07, 0.49221307, 0.23055744, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect4" type="ColorRect" parent="Background" unique_id=967622892]
 offset_left = -1243.0
@@ -50,6 +53,7 @@ offset_top = -814.0
 offset_right = -30.099976
 offset_bottom = -14.0
 color = Color(0.65837795, 0.27662927, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnMarker2D" type="Marker2D" parent="." unique_id=1669599676]
 position = Vector2(-16, -4)
@@ -100,18 +104,6 @@ shape = SubResource("RectangleShape2D_o5qli")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="TestWall4" unique_id=1906379085]
 mesh = SubResource("QuadMesh_0wfyh")
 
-[node name="Enemy" parent="." unique_id=2032086369 instance=ExtResource("1_8153q")]
-position = Vector2(1497, -365)
-
-[node name="Enemy2" parent="." unique_id=636438818 instance=ExtResource("1_8153q")]
-position = Vector2(-745, 579)
-
-[node name="Enemy3" parent="." unique_id=2079589483 instance=ExtResource("1_8153q")]
-position = Vector2(1383, 785)
-
-[node name="Enemy4" parent="." unique_id=1577577063 instance=ExtResource("1_8153q")]
-position = Vector2(-550, -552)
-
 [node name="InvisibleWalls" type="Node2D" parent="." unique_id=1496878607]
 position = Vector2(0, 93)
 
@@ -142,7 +134,7 @@ shape = SubResource("RectangleShape2D_sugp2")
 position = Vector2(0, -1267)
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/UpArea2D" unique_id=1338000800]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls/UpArea2D" unique_id=1338000800 groups=["mobs"]]
 shape = SubResource("RectangleShape2D_sugp2")
 
 [node name="MobPath2D" type="Path2D" parent="." unique_id=1771946364]
