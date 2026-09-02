@@ -1,19 +1,51 @@
 [gd_scene format=3 uid="uid://bxqvp76i5lde"]
 
 [ext_resource type="Script" uid="uid://5qhewt5gc6k0" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
-[ext_resource type="Texture2D" uid="uid://13lhpohapjf6" path="res://assets/sprites/evil_godot.svg" id="2_8e3ao"]
 [ext_resource type="Shader" uid="uid://bogwqwccictqm" path="res://assets/shaders/blink.gdshader" id="2_38ino"]
 [ext_resource type="PackedScene" uid="uid://cfdj27eqw3fr6" path="res://scenes/particles/hit_particles.tscn" id="4_fcftc"]
+[ext_resource type="Texture2D" uid="uid://d044lup5r2723" path="res://assets/sprites/enemy.png" id="4_lu5c6"]
 [ext_resource type="AudioStream" uid="uid://cokc6yhinho3d" path="res://assets/audio/Retro Alarm 02.wav" id="5_lu5c6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e3ao"]
-size = Vector2(128, 128)
+size = Vector2(114, 128)
+
+[sub_resource type="Gradient" id="Gradient_38ino"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fcftc"]
+gradient = SubResource("Gradient_38ino")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lu5c6"]
+resource_local_to_scene = true
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 68.29
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 800.00006
+scale_min = 3.0
+scale_max = 10.0
+color = Color(0.77254903, 0.09411765, 0.12941177, 1)
+color_ramp = SubResource("GradientTexture1D_fcftc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_38ino"]
 resource_local_to_scene = true
 shader = ExtResource("2_38ino")
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_intensity = 0.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fcftc"]
+random_pitch = 1.3348398
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("5_lu5c6")
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2032086369 groups=["mobs"]]
 z_index = 5
@@ -44,6 +76,7 @@ offset_right = -24.0
 offset_bottom = -63.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291681670]
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_8e3ao")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1547769493]
@@ -51,15 +84,21 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1495612045]
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_8e3ao")
 
 [node name="HitParticles" parent="." unique_id=62251992 instance=ExtResource("4_fcftc")]
 amount = 15
+process_material = SubResource("ParticleProcessMaterial_lu5c6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=148368133]
 modulate = Color(0.86395586, 0, 0.29259437, 1)
 texture_filter = 1
 material = SubResource("ShaderMaterial_38ino")
+position = Vector2(23, 0)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("4_lu5c6")
+
 [node name="SpawnAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=86036408]
 stream = SubResource("AudioStreamRandomizer_fcftc")
 volume_db = -5.0

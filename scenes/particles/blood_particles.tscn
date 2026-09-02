@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c6l87oamips8k"]
+
+[ext_resource type="Texture2D" uid="uid://b3k6frbgrt5s0" path="res://assets/sprites/blood.png" id="1_xv2uh"]
+[ext_resource type="Script" uid="uid://d1jwe5ok2ye1r" path="res://scenes/particles/blood_particles.gd" id="2_ntwx8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ntwx8"]
+particle_flag_disable_z = true
+spread = 40.0
+initial_velocity_min = 10.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color = Color(0.6895981, 0, 0.028662343, 1)
+
+[node name="BloodParticles" type="GPUParticles2D" unique_id=455559169]
+z_index = 1
+texture_filter = 1
+emitting = false
+amount = 40
+texture = ExtResource("1_xv2uh")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ntwx8")
+script = ExtResource("2_ntwx8")

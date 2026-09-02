@@ -16,6 +16,8 @@ signal died
 @export var _MINIMUM_HP: int = 1
 
 @onready var hit_particles:GPUParticles2D =  $HitParticles
+@onready var blood_particle = preload("res://scenes/particles/blood_particles.tscn")
+@onready var rand_scale := randf_range(0.6, 1.4)
 
 var scaled_speed: float
 var scaled_damage: float
@@ -62,8 +64,17 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 ## Removes the enemy from the scene
-func _die() -> void:
+func _die(bullet_global_position:Vector2) -> void:
 	HitStopManager.hit_stop(HitStopManager.Duration.TINY)
+	var blood_instance:GPUParticles2D = blood_particle.instantiate()
+	
+	blood_instance.global_position = global_position
+	blood_instance.rotation = bullet_global_position.angle_to_point(global_position)
+	blood_instance.scale = blood_instance.scale * rand_scale
+	
+	add_sibling(blood_instance)
+	blood_instance.restart()
+	died.emit()
 	queue_free()
 
 ## Update the enemy speed respecting its max speed
@@ -101,7 +112,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		## reparent particles before deleting enemy and schedule its deletion
 		hit_particles.reparent(get_parent())
 		hit_particles.finished.connect(hit_particles.queue_free)
-		_die()
+		_die(body.global_position)
 	else:
 		#flash white
 		var tween: Tween = create_tween()
