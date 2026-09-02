@@ -21,6 +21,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if debug_mode:
 		_update_debug_ui()
+	
+	if Input.is_action_just_pressed("pause") and game_started:
+		get_tree().paused = not get_tree().paused
 
 
 func _start_game() -> void:
@@ -41,6 +44,7 @@ func _start_game() -> void:
 	$Player.reset()
 	
 	#unpause game
+	game_started = true
 	get_tree().paused = false
 
 
@@ -48,9 +52,6 @@ func _on_hud_start_game() -> void:
 	_start_game()
 
 
-func _on_player_died() -> void:
-	get_tree().paused = true
-	$HUD.show_game_over(score)
 
 
 func _on_score_timer_timeout() -> void:
@@ -62,8 +63,7 @@ func _set_score(value: int) -> void:
 	$HUD.update_score(value, WIN_TIME * 60)
 	
 	if score == (60.0 * WIN_TIME):
-		get_tree().paused = true
-		$HUD.show_win()
+		_win()
 
 
 func _on_player_damaged() -> void:
@@ -77,3 +77,13 @@ func _on_hud_end_game() -> void:
 
 func _update_debug_ui() -> void:
 	$HUD.update_debug(player.get_player_stats(), 60 * WIN_TIME)
+
+func _win() -> void:
+	get_tree().paused = true
+	game_started = false
+	$HUD.show_win()
+
+func _on_player_died() -> void:
+	get_tree().paused = true
+	game_started = false
+	$HUD.show_game_over(score)
