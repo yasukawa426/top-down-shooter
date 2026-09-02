@@ -33,8 +33,8 @@ func hit_stop(duration: Duration):
 	await get_tree().create_timer(time, true, false, true).timeout
 	Engine.time_scale = 1
 
-
-func slow_mo(seconds: int):	
+## Slows down time by 60% for X seconds.
+func slow_mo(seconds: float):	
 	Engine.time_scale = 0.4
 		
 	await get_tree().create_timer(seconds, true, false, true).timeout
