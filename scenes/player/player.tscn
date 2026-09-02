@@ -14,23 +14,25 @@ collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_g2els")
 
+[node name="Visual" type="Node2D" parent="." unique_id=1112943667]
+
+[node name="GunSprite" type="Sprite2D" parent="Visual" unique_id=1033132116]
+position = Vector2(43, 0)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_gmlin")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Visual" unique_id=474813803]
+texture_filter = 1
+position = Vector2(16, 0)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("3_lvxji")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2010554232]
 zoom = Vector2(0.7, 0.7)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="GunSprite" type="Sprite2D" parent="." unique_id=1033132116]
-position = Vector2(43, 0)
-scale = Vector2(4.5, 4.5)
-texture = ExtResource("2_gmlin")
-
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=474813803]
-texture_filter = 1
-position = Vector2(16, 0)
-scale = Vector2(4.5, 4.5)
-texture = ExtResource("3_lvxji")
 
 [node name="BulletMarker2D" type="Marker2D" parent="." unique_id=1295714377]
 position = Vector2(77, 0)

@@ -50,8 +50,7 @@ func _handle_user_input() -> void:
 	
 		
 	if Input.is_action_pressed("shoot") and $ShootCooldownTimer.is_stopped():
-		_spawn_bullet()
-		$ShootCooldownTimer.start()
+		_shoot()
 	
 	if Input.is_action_just_released("reset"):
 		var bullets: Array[Node] = get_tree().get_nodes_in_group("bullets")
@@ -129,3 +128,32 @@ func get_player_stats() -> Dictionary:
 		"bullet_speed": BULLET_SPEED,
 		"current_damage": current_damage,
 	}
+
+func _shoot() -> void:
+	_spawn_bullet()
+	_wiggle_player()
+	$ShootCooldownTimer.start()
+
+## Shakes the player when firing gun, strengh is based on bullet damage. Visual Only
+func _wiggle_player():
+	const BASE_RECOIL: float = 20
+	const DAMAGE_INFLUENCE: float = 0.3
+	
+	var sprites: Node2D = $Visual
+	# direction the sprites will move to after shooting
+	var recoil_direction: Vector2 = -sprites.transform.x.normalized()
+	var original_position: Vector2 = sprites.position
+	
+	var recoil_strengh: float = (current_damage * DAMAGE_INFLUENCE) * BASE_RECOIL
+	var recoil_position: Vector2 = original_position + (recoil_direction * recoil_strengh)
+	
+	
+	# tween animates smoothly property changes overtimes. as in, move to the left in 0.5 second. Calling multiple property changes queues them.
+	var tween: Tween = create_tween()
+	# apply recoil
+	tween.tween_property(sprites, "position", recoil_position, 0.05)
+	# go back 
+	tween.tween_property(sprites, "position", original_position, 0.08)
+
+	# add real knockback. this need friction and stuff tho.
+	# velocity += recoil_direction * recoil_strengh
