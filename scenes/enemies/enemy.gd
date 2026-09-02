@@ -65,7 +65,7 @@ func _physics_process(_delta: float) -> void:
 
 ## Removes the enemy from the scene
 func _die(bullet_global_position:Vector2) -> void:
-	HitStopManager.hit_stop(HitStopManager.Duration.TINY)
+	HitStopManager.hit_stop(HitStopManager.Duration.SHORT)
 	var blood_instance:GPUParticles2D = blood_particle.instantiate()
 	
 	blood_instance.global_position = global_position
