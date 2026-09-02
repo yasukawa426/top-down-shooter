@@ -17,7 +17,6 @@ config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
-Dialogic="*uid://ds2q0uclmolvu"
 HitStopManager="*uid://cxtcq35gi6kes"
 Utils="*uid://d4y8c7uo5a68"
 
@@ -41,7 +40,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/project-time-tracker/plugin.cfg")
+enabled=PackedStringArray("res://addons/project-time-tracker/plugin.cfg")
 
 [gui]
 
