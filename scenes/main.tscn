@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="3_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=885210974]
+process_mode = 3
 script = ExtResource("1_sugp2")
 
 [node name="Levels" type="Node2D" parent="." unique_id=614497408]

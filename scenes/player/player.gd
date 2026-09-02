@@ -101,10 +101,14 @@ func damage_player(enemy_damage: int) -> void:
 	current_hp -= enemy_damage
 	
 	damaged.emit()
-	
+
 	if current_hp <= 0:
 		_die()
-		
+	else:
+		# apply the blink shader smoothly to all children of Visual node
+		for sprites in $Visual.get_children():
+			var tween: Tween = sprites.create_tween()
+			tween.tween_method(Utils.set_shader_blink_intensity.bind(sprites), 1.0, 0.0, 0.3)
 		
 func _die() -> void:
 	#got hit, hide and emit signal
