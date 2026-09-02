@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Top-Down Shooter"
+config/name="SURVIVE 5 MINUTES"
+config/version="1.0"
 run/main_scene="uid://casmc0sauekke"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/sprites/icon.svg"
+config/icon="uid://camciqs0k3ifu"
 
 [autoload]
 
