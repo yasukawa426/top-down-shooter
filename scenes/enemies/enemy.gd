@@ -14,6 +14,7 @@ extends CharacterBody2D
 ## Enemy minimum HP after scaling.
 @export var _MINIMUM_HP: int = 1
 
+@onready var hit_particles:GPUParticles2D =  $HitParticles
 
 var scaled_speed: float
 var scaled_damage: float
@@ -57,19 +58,10 @@ func _physics_process(_delta: float) -> void:
 			
 		#kachaw
 		move_and_slide()
-		
-		
-## Got hit by a bullet -> gets damage and delete bullet -> if hp <= 0 dies
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.queue_free()
-
-	current_hp -= player.current_damage
-
-	if current_hp <= 0:
-		_die()
 
 ## Removes the enemy from the scene
 func _die() -> void:
+	HitStopManager.hit_stop(HitStopManager.Duration.TINY)
 	queue_free()
 
 ## Update the enemy speed respecting its max speed
@@ -92,3 +84,25 @@ func set_hp(hp: float) -> void:
 		hp = _MINIMUM_HP
 
 	current_hp = hp
+
+## Got hit by a bullet -> gets damage and delete bullet -> if hp <= 0 dies
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	body.queue_free()
+
+	current_hp -= player.current_damage
+
+	$DebugHpLabel.text = "hp: " + str(current_hp)
+	hit_particles.restart()
+	
+	# if ded
+	if current_hp <= 0:
+		## reparent particles before deleting enemy and schedule its deletion
+		hit_particles.reparent(get_parent())
+		hit_particles.finished.connect(hit_particles.queue_free)
+		_die()
+	else:
+		#flash white
+		var tween: Tween = create_tween()
+		tween.tween_method(Utils.set_shader_blink_intensity.bind($Sprite2D), 1.0, 0.0, 0.2)
+	
+	
