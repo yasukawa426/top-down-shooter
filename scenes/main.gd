@@ -9,11 +9,16 @@ var score:int = 0
 
 var game_started: bool = false
 var test_level: PackedScene = preload("res://scenes/levels/test.tscn")
+var cursor: Image = load("res://assets/sprites/crosshair.png")
 
 var debug_mode: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#customize mouse
+	cursor.resize(64, 64, Image.INTERPOLATE_NEAREST)
+	Input.set_custom_mouse_cursor(cursor)
+	
 	debug_mode = OS.is_debug_build()
 	get_tree().paused = true
 	player = $Player
