@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://13lhpohapjf6" path="res://assets/sprites/evil_godot.svg" id="2_8e3ao"]
 [ext_resource type="Shader" uid="uid://bogwqwccictqm" path="res://assets/shaders/blink.gdshader" id="2_38ino"]
 [ext_resource type="PackedScene" uid="uid://cfdj27eqw3fr6" path="res://scenes/particles/hit_particles.tscn" id="4_fcftc"]
+[ext_resource type="AudioStream" uid="uid://cokc6yhinho3d" path="res://assets/audio/Retro Alarm 02.wav" id="5_lu5c6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e3ao"]
 size = Vector2(128, 128)
@@ -59,6 +60,9 @@ amount = 15
 modulate = Color(0.86395586, 0, 0.29259437, 1)
 texture_filter = 1
 material = SubResource("ShaderMaterial_38ino")
-texture = ExtResource("2_8e3ao")
+[node name="SpawnAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=86036408]
+stream = SubResource("AudioStreamRandomizer_fcftc")
+volume_db = -5.0
+pitch_scale = 0.3
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

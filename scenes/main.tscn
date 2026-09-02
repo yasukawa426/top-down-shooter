@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://hq46cpwvrnig" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bhpii81b3taj2" path="res://scenes/hud.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://d4iguj12hqdiq" path="res://scenes/player/player.tscn" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://chvcfve182na6" path="res://util_scripts/audio_button.gd" id="5_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://l2fg0iuvwr1o" path="res://assets/audio/Retro Ambience 11.wav" id="5_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://cvfagn8oa18fn" path="res://assets/audio/Retro Event UI 13.wav" id="6_tefeu"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_tefeu"]
+stream_count = 1
+stream_0 = ExtResource("5_tbgi4")
 
 [node name="Main" type="Node2D" unique_id=885210974]
 process_mode = 3
@@ -63,6 +70,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "START"
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="ExitButton" type="Button" parent="HUD/MenuControl" unique_id=1903461045]
 layout_mode = 1
@@ -79,6 +88,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "EXIT"
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="GameplayControl" type="Control" parent="HUD" unique_id=1626085679]
 layout_mode = 3
@@ -181,6 +192,8 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 60
 text = "KILL THEM ALL AGAIN"
 autowrap_mode = 2
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="ExitButton" type="Button" parent="HUD/GameOverControl/ColorRect" unique_id=2057986492]
 layout_mode = 1
@@ -197,6 +210,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "GIVE UP"
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="WinControl" type="Control" parent="HUD" unique_id=2091117610]
 layout_mode = 3
@@ -256,6 +271,8 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 60
 text = "KILL THEM ALL AGAIN"
 autowrap_mode = 2
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="ExitButton" type="Button" parent="HUD/WinControl/ColorRect" unique_id=1870502574]
 layout_mode = 1
@@ -272,6 +289,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "GIVE UP"
+script = ExtResource("5_o6xl0")
+sound = ExtResource("6_tefeu")
 
 [node name="DebugControl" type="Control" parent="HUD" unique_id=1464364258]
 visible = false
@@ -307,6 +326,13 @@ grow_vertical = 0
 
 [node name="ScoreTimer" type="Timer" parent="." unique_id=717289112]
 process_mode = 1
+
+[node name="AmbientAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1769055607]
+process_mode = 1
+stream = SubResource("AudioStreamPlaylist_tefeu")
+
+[node name="UIAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=677363172]
+stream = ExtResource("6_tefeu")
 
 [connection signal="damaged" from="Player" to="." method="_on_player_damaged"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]

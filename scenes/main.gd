@@ -15,6 +15,9 @@ var debug_mode: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#louwer volume
+	AudioServer.set_bus_volume_db(0, -15)
+	
 	#customize mouse
 	cursor.resize(64, 64, Image.INTERPOLATE_NEAREST)
 	Input.set_custom_mouse_cursor(cursor)
@@ -32,6 +35,7 @@ func _process(_delta: float) -> void:
 
 
 func _start_game() -> void:
+	$AmbientAudioStreamPlayer.play()
 	#reset level
 	var levels: Array[Node] = $Levels.get_children()
 	for node in levels:

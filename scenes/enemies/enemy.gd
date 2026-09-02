@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal died
 
 ## Base speed all enemies will be based on
 @export var BASE_SPEED: int = 200
@@ -22,7 +23,7 @@ var current_hp: float
 var player: Node2D
 
 func _ready() -> void:
-	var rand_scale := randf_range(0.6, 1.4)
+	
 	scale = Vector2(rand_scale, rand_scale)
 	
 	#the smaller the faster and the bigger the stronger, we use power so it is even more noticiable
@@ -30,6 +31,7 @@ func _ready() -> void:
 	set_damage(BASE_DAMAGE * pow(rand_scale, 3))
 	set_hp(BASE_HP * pow(rand_scale, 3))
 	
+	$SpawnAudioStreamPlayer.play()
 	
 	if OS.is_debug_build():
 		$DebugSpeedLabel.visible = true

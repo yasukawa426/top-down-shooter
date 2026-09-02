@@ -17,11 +17,14 @@ var current_damage: int = INITIAL_DAMAGE
 var max_hp: int = INITIAL_MAX_HP
 ## Player current hp, can be modified by heals and damage.
 var current_hp: int = INITIAL_MAX_HP
-
+var dead: bool = true
 
 @onready var camera2d: Camera2D = $Camera2D
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var INITIAL_SPRITE_LOCAL_POSITION: Vector2 = $Visual.position
+
+func _ready() -> void:
+	dead = true
 
 func _process(_delta: float) -> void:
 	#rotate towards the mouse
@@ -31,13 +34,16 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	#TODO: overhaul player movement to use acceleration and friction
 	velocity = Vector2.ZERO
-	
-	_handle_user_input()
+	if not dead:
+		_handle_user_input()
 
 	
-	if velocity.length() > 0:
+	if velocity.length() > 0 and not dead:
+		if $FootstepTimer.is_stopped():
+			$FootstepTimer.start()
 		velocity = velocity.normalized() * SPEED
 	else:
+		$FootstepTimer.stop()
 		pass
 		
 	#move_and_slide already uses delta
@@ -85,6 +91,7 @@ func _spawn_bullet() -> void:
 	
 	new_bullet.linear_velocity = ($BulletMarker2D.global_position - global_position).normalized() * BULLET_SPEED
 	
+	new_bullet.hit_something.connect(_play_bullet_sound)
 	add_sibling(new_bullet)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -106,13 +113,20 @@ func damage_player(enemy_damage: int) -> void:
 	if current_hp <= 0:
 		_die()
 	else:
+		$HurtAudioStreamPlayer.play()
+		# apply the blink shade to player only
+		var tween: Tween = $Visual/PlayerSprite.create_tween()
+		tween.tween_method(Utils.set_shader_blink_intensity.bind($Visual/PlayerSprite), 1.0, 0.0, 0.3)
 		# apply the blink shader smoothly to all children of Visual node
-		for sprites in $Visual.get_children():
-			var tween: Tween = sprites.create_tween()
-			tween.tween_method(Utils.set_shader_blink_intensity.bind(sprites), 1.0, 0.0, 0.3)
+		#for sprites in $Visual.get_children():
+			#var tween: Tween = sprites.create_tween()
+			#tween.tween_method(Utils.set_shader_blink_intensity.bind(sprites), 1.0, 0.0, 0.3)
+			
 		
 func _die() -> void:
+	dead = true
 	#got hit, hide and emit signal
+	$DeathAudioStreamPlayer.play()
 	hide()
 	died.emit()
 	#disables collision for area2d as to not trigger multiple times after finished collision processing
@@ -137,7 +151,11 @@ func get_player_stats() -> Dictionary:
 func _shoot() -> void:
 	_spawn_bullet()
 	_wiggle_player()
+	$FireAudioStreamPlayer.play()
 	$ShootCooldownTimer.start()
+	var tween: Tween = $Visual/GunSprite.create_tween()
+	tween.tween_method(Utils.set_shader_blink_intensity.bind($Visual/GunSprite), 0.8, 0.0, $ShootCooldownTimer.time_left)
+	
 
 ## Shakes the player when firing gun, strengh is based on bullet damage. Visual Only
 func _wiggle_player():
@@ -163,3 +181,16 @@ func _wiggle_player():
 
 	# add real knockback. this need friction and stuff tho.
 	# velocity += recoil_direction * recoil_strengh
+
+func _play_bullet_sound() ->void:
+	var sound_player: AudioStreamPlayer = $BulletAudioStreamPlayer
+	sound_player.play()
+
+
+func _on_shoot_cooldown_timer_timeout() -> void:
+	#$ReloadAudioStreamPlayer.speed
+	$ReloadAudioStreamPlayer.play(0.33)
+
+
+func _on_footstep_timer_timeout() -> void:
+	$FootstepAudioStreamPlayer.play()

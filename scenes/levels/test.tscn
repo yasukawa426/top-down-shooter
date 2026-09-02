@@ -2,12 +2,8 @@
 
 [ext_resource type="Script" uid="uid://baqyhx8b623ma" path="res://scenes/levels/test.gd" id="1_52kye"]
 [ext_resource type="PackedScene" uid="uid://bxqvp76i5lde" path="res://scenes/enemies/enemy.tscn" id="1_8153q"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(99, 500)
-
-[sub_resource type="QuadMesh" id="QuadMesh_0wfyh"]
-size = Vector2(100, 500)
+[ext_resource type="AudioStream" uid="uid://cbljpkbqhkt5r" path="res://assets/audio/Retro Explosion Short 15.wav" id="4_7115g"]
+[ext_resource type="AudioStream" uid="uid://by3pi55p7wb58" path="res://assets/audio/Retro Explosion Short 01.wav" id="5_koekj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(448, 2878)
@@ -20,6 +16,13 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -1960, -976, 0, 0, 0, 0, 1984, -992, 0, 0, 0, 0, 1984, 1168, 0, 0, 0, 0, -1960, 1168, 0, 0, 0, 0, -1960, -976)
 }
 point_count = 5
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kw13u"]
+random_pitch = 1.3348398
+random_volume_offset_db = 1.0
+streams_count = 2
+stream_0/stream = ExtResource("4_7115g")
+stream_1/stream = ExtResource("5_koekj")
 
 [node name="Test" type="Node2D" unique_id=882016568]
 script = ExtResource("1_52kye")
