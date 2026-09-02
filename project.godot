@@ -18,6 +18,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+HitStopManager="*uid://cxtcq35gi6kes"
 
 [debug]
 
