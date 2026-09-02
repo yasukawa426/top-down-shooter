@@ -31,7 +31,6 @@ func _start_game() -> void:
 	
 	var level_instance: Node2D = test_level.instantiate()
 	$Levels.add_child(level_instance)
-	level_instance.player_died.connect(_on_player_died)
 	
 	
 	#reset score

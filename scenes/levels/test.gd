@@ -1,5 +1,4 @@
 extends Node2D
-signal player_died
 
 @export var mob_scene: PackedScene
 
@@ -12,7 +11,6 @@ func _ready() -> void:
 	
 	var player_node = get_tree().get_first_node_in_group("player")
 	player_node.position = $PlayerSpawnMarker2D.position
-	player_node.died.connect(_on_player_died)
 	
 	#add_child(player_node)
 	
@@ -27,8 +25,3 @@ func _on_mob_timer_timeout() -> void:
 	
 	
 	add_child(mob)
-
-
-func _on_player_died() -> void:
-	print("Emiting stage player died")
-	player_died.emit()
