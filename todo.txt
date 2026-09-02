@@ -17,7 +17,7 @@
 - Enemies:
     - Make mobs spawn every z seconds
         - Decrease time between spawns the longer the player survives
-    - Make some mobs have more health
+    - Make some mobs have more health (done)
     - Select different sprites based on the enemy status
         - Basic enemy (close to base values)
         - Fast enemy (small and fast)
