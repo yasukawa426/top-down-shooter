@@ -21,7 +21,7 @@ var current_hp: int = INITIAL_MAX_HP
 
 @onready var camera2d: Camera2D = $Camera2D
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
-
+@onready var INITIAL_SPRITE_LOCAL_POSITION: Vector2 = $Visual.position
 
 func _process(_delta: float) -> void:
 	#rotate towards the mouse
@@ -29,6 +29,7 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(_delta: float) -> void:
+	#TODO: overhaul player movement to use acceleration and friction
 	velocity = Vector2.ZERO
 	
 	_handle_user_input()
@@ -146,10 +147,11 @@ func _wiggle_player():
 	var sprites: Node2D = $Visual
 	# direction the sprites will move to after shooting
 	var recoil_direction: Vector2 = -sprites.transform.x.normalized()
-	var original_position: Vector2 = sprites.position
+	# position before recoil
+	var current_position: Vector2 = sprites.position
 	
 	var recoil_strengh: float = (current_damage * DAMAGE_INFLUENCE) * BASE_RECOIL
-	var recoil_position: Vector2 = original_position + (recoil_direction * recoil_strengh)
+	var recoil_position: Vector2 = current_position + (recoil_direction * recoil_strengh)
 	
 	
 	# tween animates smoothly property changes overtimes. as in, move to the left in 0.5 second. Calling multiple property changes queues them.
@@ -157,7 +159,7 @@ func _wiggle_player():
 	# apply recoil
 	tween.tween_property(sprites, "position", recoil_position, 0.05)
 	# go back 
-	tween.tween_property(sprites, "position", original_position, 0.08)
+	tween.tween_property(sprites, "position", INITIAL_SPRITE_LOCAL_POSITION, 0.08)
 
 	# add real knockback. this need friction and stuff tho.
 	# velocity += recoil_direction * recoil_strengh
