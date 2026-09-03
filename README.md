@@ -6,7 +6,7 @@ I'm not really satisfied with its current state, but if you check my [todo.txt](
 While adding the SFX I went for an eerie vibe and I really liked how it turned out.
 
 The code is also probably kinda janky.
-## Gameplay
+## Gameplay Video
 [![Game Screenshot](http://img.youtube.com/vi/IlokBUkKOJs/0.jpg)](https://youtu.be/IlokBUkKOJs)
 ## Mechanics
 The game is a top-down shooter. The player can move in all four directions, aim with the mouse, and shoot with the left mouse button. The gun changes from yellow back to its normal color while the cooldown decreases. The player can also stop time lol.
